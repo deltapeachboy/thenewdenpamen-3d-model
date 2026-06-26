@@ -59,9 +59,8 @@
             transform: scale(0.98);
         }
 
-        /* 3D表示枠のスタイル */
+        /* 3D表示枠のスタイル（最初から表示するため display: none は削除しています） */
         #viewer-container {
-            display: none;        /* 初期状態は非表示 */
             width: 95%;           /* 横幅：画面幅の95% */
             max-width: 1200px;    /* 最大横幅：1200px */
             height: 70vh;         /* 縦幅：画面の高さの70% */
@@ -84,22 +83,18 @@
 
     <h1>3Dモデル ビューア</h1>
 
-    <!--
-      【編集エリア：ボタンの追加・変更】
-      ・data-src の中に、ご自身の「.glbファイルの正確なファイル名」を入力してください。
-      ・ボタンに表示させたい名前を自由に書き換えてください。
-    -->
+    <!-- ボタンエリア -->
     <div class="button-container">
         <button class="model-btn" data-src="candy.glb">キャンディ</button>
         <button class="model-btn" data-src="hire.glb">ヒレ</button>
         <button class="model-btn" data-src="sun.glb">太陽</button>
     </div>
 
-    <!-- 3Dモデルを表示するエリア -->
+    <!-- 3Dモデルを表示するエリア（最初から表示されます） -->
     <div id="viewer-container">
         <model-viewer
             id="model"
-            src=""
+            src="sun.glb"
             alt="3D Model"
             camera-controls
             auto-rotate
@@ -122,9 +117,6 @@
 
                 // 表示するモデルを切り替え
                 viewer.setAttribute('src', modelSrc);
-
-                // 表示枠を非表示から表示（block）に変更
-                container.style.display = 'block';
 
                 // ボタンクリック時に自動で枠の場所までスクロールさせる
                 container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
