@@ -59,7 +59,7 @@
             transform: scale(0.98);
         }
 
-        /* 3D表示枠のスタイル（大きめに設定しています） */
+        /* 3D表示枠のスタイル */
         #viewer-container {
             display: none;        /* 初期状態は非表示 */
             width: 95%;           /* 横幅：画面幅の95% */
@@ -92,9 +92,10 @@
     <div class="button-container">
         <button class="model-btn" data-src="candy.glb">キャンディ</button>
         <button class="model-btn" data-src="hire.glb">ヒレ</button>
+        <button class="model-btn" data-src="sun.glb">太陽</button>
     </div>
 
-    <!-- 3Dモデルを表示するエリア（ボタンを押すと表示されます） -->
+    <!-- 3Dモデルを表示するエリア -->
     <div id="viewer-container">
         <model-viewer
             id="model"
@@ -102,7 +103,10 @@
             alt="3D Model"
             camera-controls
             auto-rotate
-            touch-action="pan-y">
+            touch-action="pan-y"
+            min-camera-orbit="auto 5deg auto"
+            max-camera-orbit="auto 175deg auto"
+            interaction-prompt="none">
         </model-viewer>
     </div>
 
